@@ -8,10 +8,10 @@ import pprint
 import json
 
 base_url = "https://api-na.hosted.exlibrisgroup.com/almaws/v1/analytics/reports"
-api_key = os.environ["API_KEY"]
+api_key = os.environ["l7xxcb8ce5caab29450683fecbf9b210e705"]
 gb_api_key = os.environ["GB_API_KEY"]
 path = (
-    "/shared/Fashion Institute of Technology 01SUNY_FIT/Reports/20191213-new-book-list"
+    "/shared/Art Institute of Chicago/Reports/newbooks"
 )
 params = {"apikey": api_key, "path": path, "limit": "200", "col_names": "true"}
 url = base_url + "?" + urllib.parse.urlencode(params)
@@ -49,7 +49,7 @@ with urllib.request.urlopen(url) as response:
         formatted_record = {
             "title": "",
             "author": "",
-            "onesearch-url": "",
+            "primo-url": "",
             "call-number": "",
             "cover-url": "",
             "created": "",
@@ -59,8 +59,8 @@ with urllib.request.urlopen(url) as response:
         if "Column1" in record:
             formatted_record["author"] = record["Column1"]
         if "Column4" in record:
-            formatted_record["onesearch-url"] = (
-                "https://onesearch.fitnyc.edu/discovery/fulldisplay?docid=alma"
+            formatted_record["primo-url"] = (
+                "https://artic.primo.exlibrisgroup.com/discovery/fulldisplay?docid=alma"
                 + record["Column4"]
                 + "&context=L&vid=01SUNY_FIT:01SUNY_FIT&search_scope=MyInst_and_CI&tab=Everything&lang=en"
             )

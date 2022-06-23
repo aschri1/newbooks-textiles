@@ -30,7 +30,7 @@ $(document).ready(function() {
     $(".owl-carousel").append(slides);
     var owl = $('.owl-carousel');
     owl.owlCarousel({
-      margin: 30,
+      margin: 20,
       loop: false,
       autoWidth: true,
       items: 10,
