@@ -8,7 +8,7 @@ import pprint
 import json
 
 base_url = "https://api-na.hosted.exlibrisgroup.com/almaws/v1/analytics/reports"
-api_key = os.environ["l7xxcb8ce5caab29450683fecbf9b210e705"]
+api_key = os.environ["ALMA_API_KEY"]
 gb_api_key = os.environ["GB_API_KEY"]
 path = (
     "/shared/Art Institute of Chicago/Reports/newbooks"
