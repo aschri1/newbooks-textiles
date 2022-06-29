@@ -62,7 +62,7 @@ with urllib.request.urlopen(url) as response:
             formatted_record["primo-url"] = (
                 "https://artic.primo.exlibrisgroup.com/discovery/fulldisplay?docid=alma"
                 + record["Column4"]
-                + "&context=L&vid=01SUNY_FIT:01SUNY_FIT&search_scope=MyInst_and_CI&tab=Everything&lang=en"
+                + "&context=L&vid=01ARTIC:01ARTIC&search_scope=MyInst_and_CI&tab=Everything&lang=en"
             )
         if "Column6" in record:
             formatted_record["call-number"] = record["Column6"]
@@ -75,6 +75,6 @@ with urllib.request.urlopen(url) as response:
         if formatted_record["cover-url"] != "":
             formatted_records.append(formatted_record)
 
-    filename = "gh-pages/new-books.json"
+    filename = "gh-pages/newbooks.json"
     with open(filename, "w") as outfile:
         json.dump(formatted_records, outfile, indent=4)
