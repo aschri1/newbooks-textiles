@@ -5,7 +5,7 @@ python:
 install:
   - pip install xmltodict
 script:
-  python alma-new-books.py
+  python new-books.py
 deploy:
   provider: pages
   local_dir: gh-pages
@@ -17,6 +17,6 @@ deploy:
 notifications:
   email:
     recipients:
-      - joseph_anderson@fitnyc.edu
+      - aschriver@artic.edu
     on_success: never # default: change
     on_failure: always # default: always

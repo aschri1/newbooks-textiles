@@ -3,13 +3,14 @@
 import urllib.parse
 import urllib.request
 import os
+import config.py
 import xmltodict
 import pprint
 import json
 
 base_url = "https://api-na.hosted.exlibrisgroup.com/almaws/v1/analytics/reports"
-api_key = os.environ["ALMA_API_KEY"]
-gb_api_key = os.environ["GB_API_KEY"]
+api_key = config["ALMA_API_KEY"]
+gb_api_key = config["GB_API_KEY"]
 path = (
     "/shared/Art Institute of Chicago/Reports/newbooks"
 )
@@ -75,6 +76,6 @@ with urllib.request.urlopen(url) as response:
         if formatted_record["cover-url"] != "":
             formatted_records.append(formatted_record)
 
-    filename = "gh-pages/newbooks.json"
+    filename = "gh-pages/new-books.json"
     with open(filename, "w") as outfile:
         json.dump(formatted_records, outfile, indent=4)
