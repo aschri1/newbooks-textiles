@@ -4,7 +4,7 @@ $(document).ready(function() {
     $.each(data, function(i, book) {
       if (book["cover-url"] != "") {
         var slide = `
-        <a class="card" target="_top" href="` + book["onesearch-url"] + `" title="` + book["title"] + `">
+        <a class="card" target="_top" href="` + book["primo-url"] + `" title="` + book["title"] + `">
           <img src="` + book["cover-url"] + `" alt="` + book["title"] + `" class="card-img">
         </a>
         `
@@ -30,7 +30,7 @@ $(document).ready(function() {
     $(".owl-carousel").append(slides);
     var owl = $('.owl-carousel');
     owl.owlCarousel({
-      margin: 20,
+      margin: 10,
       loop: false,
       autoWidth: true,
       items: 10,
