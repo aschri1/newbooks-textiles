@@ -2,7 +2,6 @@
 
 import urllib.parse
 import urllib.request
-import os
 import config.py
 import xmltodict
 import pprint
