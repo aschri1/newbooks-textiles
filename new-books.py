@@ -62,7 +62,7 @@ with urllib.request.urlopen(url) as response:
             formatted_record["primo-url"] = (
                 "https://artic.primo.exlibrisgroup.com/discovery/fulldisplay?docid=alma"
                 + record["Column4"]
-                + "&context=L&vid=01ARTIC:01ARTIC&search_scope=MyInst_and_CI&tab=Everything&lang=en"
+                + "&context=L&vid=01ARTIC_INST:01ARTIC&search_scope=MyInst_and_CI&tab=Everything&lang=en"
             )
         if "Column6" in record:
             formatted_record["call-number"] = record["Column6"]
