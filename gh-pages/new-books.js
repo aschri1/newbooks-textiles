@@ -12,7 +12,7 @@ $(document).ready(function() {
       /*
       else {
         var slide = `
-        <a class="card" href="` + book["onesearch-url"] + `">
+        <a class="card" href="` + book["primo-url"] + `">
         <div class="card-body text-center p-3">
           <h1 class="card-title text-dark">
             ` + book["title"] + `
