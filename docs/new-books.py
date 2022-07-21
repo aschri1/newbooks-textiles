@@ -56,7 +56,8 @@ with urllib.request.urlopen(url) as response:
             "created": "",
         }
         if "Column5" in record:
-            formatted_record["title"] = record["Column5"].replace("/", "").rstrip()
+            formatted_record["title"] = record["Column5"].replace(
+                "/", "").rstrip()
         if "Column1" in record:
             formatted_record["author"] = record["Column1"]
         if "Column4" in record:
