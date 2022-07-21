@@ -21,6 +21,7 @@ jobs:
       - name: execute py script
         run: |
           cd docs
+          echo -e "ALMA_API_KEY = '${{ secrets.ALMA_API_KEY }}'\nGB_API_KEY = '${{ secrets.GB_API_KEY }}'" > config.py
           python new-books.py
 
       - name: deploy to github pages
