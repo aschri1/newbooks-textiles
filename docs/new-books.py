@@ -14,7 +14,7 @@ gb_api_key = config.GB_API_KEY
 path = (
     "/shared/Art Institute of Chicago/Reports/newbooks"
 )
-params = {"apikey": api_key, "path": path, "limit": "200", "col_names": "true"}
+params = {"apikey": api_key, "path": path, "limit": "25", "col_names": "true"}
 url = base_url + "?" + urllib.parse.urlencode(params)
 
 # function to lookup Google Books API by ISBN
