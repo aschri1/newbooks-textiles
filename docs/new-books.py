@@ -8,12 +8,13 @@ import pprint
 import json
 
 base_url = "https://api-na.hosted.exlibrisgroup.com/almaws/v1/analytics/reports"
-api_key = config["ALMA_API_KEY"]
-gb_api_key = config["GB_API_KEY"]
+api_key = config.ALMA_API_KEY
+gb_api_key = config.GB_API_KEY
+
 path = (
     "/shared/Art Institute of Chicago/Reports/newbooks"
 )
-params = {"apikey": api_key, "path": path, "limit": "200", "col_names": "true"}
+params = {"apikey": api_key, "path": path, "limit": "25", "col_names": "true"}
 url = base_url + "?" + urllib.parse.urlencode(params)
 
 # function to lookup Google Books API by ISBN
@@ -55,7 +56,8 @@ with urllib.request.urlopen(url) as response:
             "created": "",
         }
         if "Column5" in record:
-            formatted_record["title"] = record["Column5"].replace("/", "").rstrip()
+            formatted_record["title"] = record["Column5"].replace(
+                "/", "").rstrip()
         if "Column1" in record:
             formatted_record["author"] = record["Column1"]
         if "Column4" in record:
