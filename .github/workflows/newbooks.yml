@@ -1,6 +1,8 @@
 name: newbooks
 
 on:
+  workflow_dispatch: # enables you to run it manually
+
   schedule:
     - cron: "30 22 * * *" # runs at 22:30 UTC (5:30 PM CDT) everyday
 
