@@ -2,7 +2,7 @@
 
 import urllib.parse
 import urllib.request
-import config.py
+import config
 import xmltodict
 import pprint
 import json
