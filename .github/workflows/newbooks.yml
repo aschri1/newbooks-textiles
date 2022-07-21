@@ -24,6 +24,7 @@ jobs:
           cd docs
           echo -e "ALMA_API_KEY = '${{ secrets.ALMA_API_KEY }}'\nGB_API_KEY = '${{ secrets.GB_API_KEY }}'" > config.py
           python new-books.py
+
       - name: deploy to github pages
         uses: peaceiris/actions-gh-pages@v3
         with:
