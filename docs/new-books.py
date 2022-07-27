@@ -55,15 +55,15 @@ with urllib.request.urlopen(url) as response:
             "cover-url": "",
             "created": "",
         }
-        if "Column5" in record:
-            formatted_record["title"] = record["Column5"].replace(
+        if "Column4" in record:
+            formatted_record["title"] = record["Column4"].replace(
                 "/", "").rstrip()
         if "Column1" in record:
             formatted_record["author"] = record["Column1"]
         if "Column4" in record:
             formatted_record["primo-url"] = (
                 "https://artic.primo.exlibrisgroup.com/discovery/fulldisplay?docid=alma"
-                + record["Column4"]
+                + record["Column3"]
                 + "&context=L&vid=01ARTIC_INST:01ARTIC&search_scope=MyInst_and_CI&tab=Everything&lang=en"
             )
         if "Column6" in record:
