@@ -1,11 +1,15 @@
 #!/usr/bin/env python
 
+#!/usr/bin/env python
+
 import urllib.parse
 import urllib.request
 import config
 import xmltodict
 import pprint
 import json
+import time
+from urllib.error import HTTPError
 
 base_url = "https://api-na.hosted.exlibrisgroup.com/almaws/v1/analytics/reports"
 api_key = config.ALMA_API_KEY
@@ -40,6 +44,30 @@ def isbn_lookup(ISBNs):
                     thumbnail = ""
     return ""
 
+# Example usage
+retry_count = 0
+max_retries = 3
+
+while retry_count < max_retries:
+        formatted_record = {
+        "title": "",
+        "author": "",
+        "primo-url": "",
+        "call-number": "",
+        "cover-url": "",  # Initialize cover-url here
+        "
+    try:
+        formatted_record["cover-url"] = isbn_lookup(ISBNs)
+        break  # Break out of the loop if the request is successful
+    except HTTPError as e:
+        if e.code == 429:
+            # Wait for some time before retrying
+            time.sleep(10 * (2 ** retry_count))
+            retry_count += 1
+        else:
+            raise  # Re-raise any other HTTPError
+else:
+    print("Maximum number of retries reached. Unable to make the request.")
 
 with urllib.request.urlopen(url) as response:
     xml = response.read()
