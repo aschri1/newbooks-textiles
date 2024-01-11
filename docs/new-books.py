@@ -49,13 +49,13 @@ retry_count = 0
 max_retries = 3
 
 while retry_count < max_retries:
-        formatted_record = {
+    formatted_record = {
         "title": "",
         "author": "",
         "primo-url": "",
         "call-number": "",
         "cover-url": "",  # Initialize cover-url here
-        "
+    }
     try:
         formatted_record["cover-url"] = isbn_lookup(ISBNs)
         break  # Break out of the loop if the request is successful
