@@ -1,7 +1,5 @@
 #!/usr/bin/env python
 
-#!/usr/bin/env python
-
 import urllib.parse
 import urllib.request
 import config
@@ -44,37 +42,7 @@ def isbn_lookup(ISBNs):
                     thumbnail = ""
     return ""
 
-# Example usage
-retry_count = 0
-max_retries = 3
 
-for record in records:  # Assuming records is the iterable containing your data
-    formatted_record = {
-        "title": "",
-        "author": "",
-        "primo-url": "",
-        "call-number": "",
-        "cover-url": "",  # Initialize cover-url here
-    }
-
-    if "Column2" in record and record["Column2"]:
-        ISBNs = record["Column2"]
-
-        while retry_count < max_retries:
-            try:
-                formatted_record["cover-url"] = isbn_lookup(ISBNs)
-                break  # Break out of the loop if the request is successful
-            except HTTPError as e:
-                if e.code == 429:
-                    # Wait for some time before retrying
-                    time.sleep(10 * (2 ** retry_count))
-                    retry_count += 1
-                else:
-                    raise  # Re-raise any other HTTPError
-        else:
-            print("Maximum number of retries reached. Unable to make the request.")
-
-    # Rest of your code for processing the record and appending to formatted_records
 
 with urllib.request.urlopen(url) as response:
     xml = response.read()
@@ -115,3 +83,36 @@ with urllib.request.urlopen(url) as response:
     filename = "gh-pages/new-books.json"
     with open(filename, "w") as outfile:
         json.dump(formatted_records, outfile, indent=4)
+
+
+# Example usage
+retry_count = 0
+max_retries = 3
+
+for record in records:  # Assuming records is the iterable containing your data
+    formatted_record = {
+        "title": "",
+        "author": "",
+        "primo-url": "",
+        "call-number": "",
+        "cover-url": "",  # Initialize cover-url here
+    }
+
+    if "Column2" in record and record["Column2"]:
+        ISBNs = record["Column2"]
+
+        while retry_count < max_retries:
+            try:
+                formatted_record["cover-url"] = isbn_lookup(ISBNs)
+                break  # Break out of the loop if the request is successful
+            except HTTPError as e:
+                if e.code == 429:
+                    # Wait for some time before retrying
+                    time.sleep(10 * (2 ** retry_count))
+                    retry_count += 1
+                else:
+                    raise  # Re-raise any other HTTPError
+        else:
+            print("Maximum number of retries reached. Unable to make the request.")
+
+    # Rest of your code for processing the record and appending to formatted_records
