@@ -14,7 +14,7 @@ api_key = config.ALMA_API_KEY
 gb_api_key = config.GB_API_KEY
 
 path = (
-    "/shared/Art Institute of Chicago/Reports/newbooks"
+    "/shared/Art Institute of Chicago/Reports/newbooks-textiles"
 )
 params = {"apikey": api_key, "path": path, "limit": "50", "col_names": "true"}
 url = base_url + "?" + urllib.parse.urlencode(params)
