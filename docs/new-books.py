@@ -58,19 +58,19 @@ with urllib.request.urlopen(url) as response:
             "cover-url": "",
             "created": "",
         }
-        if "Column4" in record:
-            formatted_record["title"] = record["Column4"].replace(
+        if "Column6" in record:
+            formatted_record["title"] = record["Column6"].replace(
                 "/", "").rstrip()
         if "Column1" in record:
             formatted_record["author"] = record["Column1"]
         if "Column4" in record:
             formatted_record["primo-url"] = (
                 "https://artic.primo.exlibrisgroup.com/discovery/fulldisplay?docid=alma"
-                + record["Column3"]
+                + record["Column4"]
                 + "&context=L&vid=01ARTIC_INST:01ARTIC&search_scope=MyInst_and_CI&tab=Everything&lang=en"
             )
-        if "Column6" in record:
-            formatted_record["call-number"] = record["Column6"]
+        if "Column8" in record:
+            formatted_record["call-number"] = record["Column8"]
         if "Column2" in record and record["Column2"]:
             ISBNs = record["Column2"]
             formatted_record["cover-url"] = isbn_lookup(ISBNs)
