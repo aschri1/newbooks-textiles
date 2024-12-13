@@ -3,9 +3,6 @@ name: newbooks
 on:
   workflow_dispatch: # enables you to run it manually
 
-  schedule:
-    - cron: "30 22 * * *" # runs at 23:00 UTC (6:00 PM CDT) everyday
-
 jobs:
   build:
     runs-on: ubuntu-latest
